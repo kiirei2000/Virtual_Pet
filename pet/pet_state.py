@@ -6,6 +6,7 @@ Adds:  • needs_bath penalty – 50 % chance to lose –1 Health on every
 
 from __future__ import annotations
 import time, random
+import json
 from typing import Dict
 
 MAX_STAT, MIN_STAT = 20, 0
@@ -19,14 +20,51 @@ class VirtualPet:
         self.hunger = 5
         self.happiness = 10
         self.energy = 10
-        self.health = 15
-
+        self.health = 10
         now = time.time()
         self.last_update = now
         self.last_interaction = now
-
         self.needs_bath = False
         self._bath_timestamp: float | None = None
+    
+    from pathlib import Path
+
+    SAVE_FILE = Path("pet_state.json")
+
+    def save(self):
+        data = {
+            "name": self.name,
+            "hunger": self.hunger,
+            "happiness": self.happiness,
+            "energy": self.energy,
+            "health": self.health,
+            "last_update": self.last_update,
+            "last_interaction": self.last_interaction,
+            "needs_bath": self.needs_bath,
+            "_bath_timestamp": self._bath_timestamp
+        }
+        with self.SAVE_FILE.open("w") as f:
+            json.dump(data, f)
+
+    @classmethod
+    def load(cls):
+        if not cls.SAVE_FILE.exists():
+            return cls()
+
+        with cls.SAVE_FILE.open("r") as f:
+            data = json.load(f)
+
+        pet = cls(data["name"])
+        pet.hunger = data["hunger"]
+        pet.happiness = data["happiness"]
+        pet.energy = data["energy"]
+        pet.health = data["health"]
+        pet.last_update = data["last_update"]
+        pet.last_interaction = data["last_interaction"]
+        pet.needs_bath = data["needs_bath"]
+        pet._bath_timestamp = data["_bath_timestamp"]
+        return pet
+
 
     # ---------------- public helpers ---------------- #
     def get_status(self) -> Dict[str, int | str]:
@@ -56,19 +94,21 @@ class VirtualPet:
     # ---------------- decay loop -------------------- #
     def decay(self) -> None:
         now = time.time()
-        mins = int((now - self.last_update) // 60)
-        if mins <= 0:
+        days = int((now - self.last_update) // 86400)  # 86400 seconds = 24 hours
+
+        if days <= 0:
             return
 
-        for _ in range(mins):
+        for _ in range(days):
             self._idle_tick()
 
-        self.last_update += mins * 60
+        self.last_update += days * 86400  # move the update forward
 
-        # Re‑enable dirtiness 5 min after last bath
+        # Re‑enable dirtiness 5 minutes after last bath
         if not self.needs_bath and self._bath_timestamp:
             if now - self._bath_timestamp >= 5 * 60:
                 self.needs_bath = True
+
 
     # ---------------- mood logic -------------------- #
     def evaluate_mood(self) -> str:

@@ -14,7 +14,7 @@ def display_status(pet: VirtualPet):
     print(f"Mood: {s['mood']}")
 
 def main():
-    pet = VirtualPet("Rio")
+    pet = VirtualPet.load()
     actions = PetActions(pet)
 
     while True:
@@ -46,6 +46,8 @@ def main():
             print("Invalid choice.")
 
         time.sleep(1)
+        pet.save()
+        # Save the pet state after each action
 
 if __name__ == "__main__":
     main()
