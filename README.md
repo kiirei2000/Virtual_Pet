@@ -14,7 +14,7 @@ This animated assistant sits *on top of your desktop* and reacts to your interac
   - Poke too many times? He cries and sulks 😿
 - 🕹️ **Drag & drop** Rio anywhere on screen
 - 🪄 **Borderless transparent window** that floats over your workspace
-- 🎹 Global shortcut: `Alt + Shift + ~` to hide/show the cat
+- 🎹 Global shortcut: `Alt + Q` to hide/show the cat
 
 ---
 
@@ -41,7 +41,19 @@ tkinter – transparent floating GUI
 Pillow – to handle animated GIFs
 
 keyboard – for global toggle shortcut
+## 🧠 Mood Logic
+- Happy = idle or dancing randomly
 
+- Sleepy = yawns, sleeps after idle time
+
+- Sad or crying if you poke him too much!
+
+All actions and moods are fully customizable via the code or new GIFs.
+
+## 🐾 Related Project
+Love chaos? Try the sister project:
+🎯 Whac-a-Rio
+Tap Rio as he spawns across the screen in reflex-based madness.
 
 
 
