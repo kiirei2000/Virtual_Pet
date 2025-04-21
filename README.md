@@ -38,3 +38,22 @@ Unzip the file
 Make sure the assets/ folder is in the same folder as whac-a-rio.exe
 
 Double-click whac-a-rio.exe to start playing!
+
+## 📁 Project Structure
+   ```
+   whac-a-rio/
+   ├── whac_a_rio.py          # Main game script
+   ├── assets/                # All cat GIFs
+   │   ├── idle.gif
+   │   ├── cry.gif
+   │   └── excited.gif
+   ├── dist/                  # PyInstaller output (optional)
+```
+## 🐈 More Fun
+
+Check out the companion project:
+
+🐾 Floating Cat Rio
+
+A desktop assistant version of Rio who dances, meows, and wanders while you work!
+
