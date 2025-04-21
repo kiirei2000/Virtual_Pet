@@ -27,9 +27,9 @@ Inspired by Whac-a-Mole and OSU, built in Python with tkinter!
    ```bash
    pip install pillow keyboard
 2. Run the game:
-```bash
-python whac_a_rio.py
-```
+   ```bash
+   python whac_a_rio.py
+   ```
 Without Python (Windows EXE):
 Download the .exe from the Releases page
 
