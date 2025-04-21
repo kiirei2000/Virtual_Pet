@@ -51,8 +51,11 @@ keyboard – for global toggle shortcut
 All actions and moods are fully customizable via the code or new GIFs.
 
 ## 🐾 Related Project
+
 Love chaos? Try the sister project:
+
 🎯 Whac-a-Rio
+
 Tap Rio as he spawns across the screen in reflex-based madness.
 
 
