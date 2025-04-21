@@ -28,14 +28,18 @@ This animated assistant sits *on top of your desktop* and reacts to your interac
    ```bash
    python floating_cat.py
 Without Python (EXE version):
+
 Download the .exe from the Releases
-Extract the zip
-Make sure the assets/ folder is next to floating_cat.exe
-Double-click the .exe to summon Rio!
+
+1. Extract the zip
+2. Make sure the assets/ folder is next to floating_cat.exe
+3. Double-click the .exe to summon Rio!
 
 ## 🧱 Built With
 tkinter – transparent floating GUI
+
 Pillow – to handle animated GIFs
+
 keyboard – for global toggle shortcut
 
 
